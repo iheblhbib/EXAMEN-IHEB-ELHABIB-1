@@ -1,14 +1,13 @@
 package tn.suptech.ihebelhabib.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Adresse {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private Long id;
 
@@ -21,19 +20,24 @@ public class Adresse {
     @Column(name ="ZIPCODE")
     private String zipCode;
 
+    @Column(name ="CREATED")
+    private Date created;
 
-    @OneToOne(mappedBy = "adresse_client")
+
+    @OneToOne(mappedBy = "adresse")
     private Client client ;
 
-    @OneToOne(mappedBy = "adresse_agence")
+    @OneToOne(mappedBy = "adresse")
     private Agence agence ;
 
-
-    public Adresse(Long id, String pays, String ville, String zipCode) {
+    public Adresse(Long id, String pays, String ville, String zipCode, Date created, Client client, Agence agence) {
         this.id = id;
         this.pays = pays;
         this.ville = ville;
         this.zipCode = zipCode;
+        this.created = created;
+        this.client = client;
+        this.agence = agence;
     }
 
     public Adresse() {

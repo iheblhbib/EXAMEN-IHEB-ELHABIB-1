@@ -11,9 +11,6 @@ public class Agence {
     @Column(name = "ID")
     private Long id;
 
-    @Column(name = "ADRESSE")
-    private String adresse;
-
     @Column(name = "TEL")
     private int tel;
 
@@ -23,10 +20,14 @@ public class Agence {
     @Column(name = "LATITUDE")
     private String latitude;
 
+    @OneToOne()
+    @JoinColumn(name = "ADRESSE_ID", referencedColumnName = "id")
+    private Adresse adresse;
+
     @ManyToOne
     private Banque banque;
 
-    public Agence(Long id, String adresse, int tel, String longtitude, String latitude, Banque banque) {
+    public Agence(Long id, Adresse adresse, int tel, String longtitude, String latitude, Banque banque) {
         this.id = id;
         this.adresse = adresse;
         this.tel = tel;
@@ -46,11 +47,11 @@ public class Agence {
         this.id = id;
     }
 
-    public String getAdresse() {
+    public Adresse getAdresse() {
         return adresse;
     }
 
-    public void setAdresse(String adresse) {
+    public void setAdresse(Adresse adresse) {
         this.adresse = adresse;
     }
 

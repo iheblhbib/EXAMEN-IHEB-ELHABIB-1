@@ -33,6 +33,9 @@ public class Banque {
     @OneToMany(mappedBy = "banque")
     private List<Agence> agences;
 
+    @OneToMany(mappedBy = "banque")
+    private List<Offre> offres;
+
 
 
 
