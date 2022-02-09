@@ -3,7 +3,7 @@ package tn.suptech.ihebelhabib.entities;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
+@Entity( name = "CLIENT")
 public class Client {
 
     @Id

@@ -3,7 +3,7 @@ package tn.suptech.ihebelhabib.entities;
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity
+@Entity( name = "ADRESSE")
 public class Adresse {
 
     @Id

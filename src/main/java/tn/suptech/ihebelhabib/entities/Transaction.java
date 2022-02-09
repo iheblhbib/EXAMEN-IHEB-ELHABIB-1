@@ -3,7 +3,7 @@ package tn.suptech.ihebelhabib.entities;
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity
+@Entity( name = "TRANSACTION")
 public class Transaction {
 
     @Id
@@ -27,7 +27,7 @@ public class Transaction {
     @Column(name = "SENS")
     private String sens;
 
-    @OneToOne
+    @ManyToOne
     private Frais frais;
 
     public Transaction() {
@@ -40,6 +40,14 @@ public class Transaction {
         this.source = source;
         this.created = created;
         this.sens = sens;
+    }
+
+    public Frais getFrais() {
+        return frais;
+    }
+
+    public void setFrais(Frais frais) {
+        this.frais = frais;
     }
 
     public Long getId() {

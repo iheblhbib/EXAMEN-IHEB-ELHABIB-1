@@ -4,7 +4,8 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-@Entity
+@Entity( name = "COMPTE")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Compte {
 
     @Id

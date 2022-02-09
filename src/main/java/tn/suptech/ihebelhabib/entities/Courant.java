@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import java.util.Date;
 import java.util.List;
 
-@Entity
+@Entity( name = "COURANT")
 @DiscriminatorValue("courant")
 public class Courant extends Compte {
 

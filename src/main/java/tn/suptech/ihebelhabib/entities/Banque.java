@@ -4,7 +4,7 @@ package tn.suptech.ihebelhabib.entities;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
+@Entity( name = "BANQUE")
 public class Banque {
 
     @Id

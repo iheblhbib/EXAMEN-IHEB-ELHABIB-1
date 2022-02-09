@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import java.util.Date;
 import java.util.List;
 
-@Entity
+@Entity( name = "EPARGNE")
 @DiscriminatorValue("epargne")
 public class Epargne extends Compte {
 
