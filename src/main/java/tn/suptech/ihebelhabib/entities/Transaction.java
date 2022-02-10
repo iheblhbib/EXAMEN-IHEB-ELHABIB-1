@@ -1,5 +1,7 @@
 package tn.suptech.ihebelhabib.entities;
 
+import tn.suptech.ihebelhabib.enums.SensTransaction;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -25,7 +27,7 @@ public class Transaction {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "SENS")
-    private String sens;
+    private SensTransaction sens;
 
     @ManyToOne
     private Frais frais;
@@ -33,7 +35,7 @@ public class Transaction {
     public Transaction() {
     }
 
-    public Transaction(Long id, double montant, int distinataire, int source, Date created, String sens) {
+    public Transaction(Long id, double montant, int distinataire, int source, Date created, SensTransaction sens) {
         this.id = id;
         this.montant = montant;
         this.distinataire = distinataire;
@@ -90,11 +92,11 @@ public class Transaction {
         this.created = created;
     }
 
-    public String getSens() {
+    public SensTransaction getSens() {
         return sens;
     }
 
-    public void setSens(String sens) {
+    public void setSens(SensTransaction sens) {
         this.sens = sens;
     }
 }
