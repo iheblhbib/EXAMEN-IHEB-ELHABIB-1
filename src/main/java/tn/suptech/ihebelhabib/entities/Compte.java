@@ -1,5 +1,7 @@
 package tn.suptech.ihebelhabib.entities;
 
+import tn.suptech.ihebelhabib.enums.EtatCompte;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -16,7 +18,7 @@ public class Compte {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "ETAT")
-    private String etat;
+    private EtatCompte etat;
 
     @Column(name = "RIB")
     private int rib;
@@ -43,7 +45,7 @@ public class Compte {
     @ManyToMany(mappedBy = "comptes" )
     private Set<Offre> offres;
 
-    public Compte(Long id, String etat, int rib, String iban, Float montant, Date created, Client client, Carte carte, List<Transaction> transaction) {
+    public Compte(Long id, EtatCompte etat, int rib, String iban, Float montant, Date created, Client client, Carte carte, List<Transaction> transaction) {
         this.id = id;
         this.etat = etat;
         this.rib = rib;
@@ -74,11 +76,11 @@ public class Compte {
         this.id = id;
     }
 
-    public String getEtat() {
+    public EtatCompte getEtat() {
         return etat;
     }
 
-    public void setEtat(String etat) {
+    public void setEtat(EtatCompte etat) {
         this.etat = etat;
     }
 
