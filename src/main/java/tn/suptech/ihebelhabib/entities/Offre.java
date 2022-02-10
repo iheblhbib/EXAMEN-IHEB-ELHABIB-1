@@ -3,6 +3,7 @@ package tn.suptech.ihebelhabib.entities;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity( name = "OFFRE")
 public class Offre {
@@ -24,7 +25,9 @@ public class Offre {
     @ManyToOne
     private Banque banque;
 
-
+    @ManyToMany()
+    @JoinTable(name="COMPTE_OFFRE", joinColumns = @JoinColumn(name="OFFRE_ID"),inverseJoinColumns = @JoinColumn(name="COMPTE_ID"))
+    private Set<Compte> comptes ;
 
     public Offre(Long id, String libelle, double frais, Date created, Banque banque) {
         this.id = id;

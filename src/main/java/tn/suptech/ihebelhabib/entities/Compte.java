@@ -3,6 +3,7 @@ package tn.suptech.ihebelhabib.entities;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity( name = "COMPTE")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -39,6 +40,9 @@ public class Compte {
     @OneToMany
     private List<Transaction> transaction;
 
+    @ManyToMany(mappedBy = "comptes" )
+    private Set<Offre> offres;
+
     public Compte(Long id, String etat, int rib, String iban, Float montant, Date created, Client client, Carte carte, List<Transaction> transaction) {
         this.id = id;
         this.etat = etat;
@@ -52,6 +56,14 @@ public class Compte {
     }
 
     public Compte() {
+    }
+
+    public Set<Offre> getOffres() {
+        return offres;
+    }
+
+    public void setOffres(Set<Offre> offres) {
+        this.offres = offres;
     }
 
     public Long getId() {
