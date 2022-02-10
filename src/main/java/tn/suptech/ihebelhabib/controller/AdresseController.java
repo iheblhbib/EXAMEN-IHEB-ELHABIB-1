@@ -22,6 +22,7 @@ public class AdresseController {
 
     @PostMapping(path = "/addadresse")
     public Adresse createAdresse(@RequestBody Adresse adresse){
+        logger.error("Adresse ajouter avec success");
         return adresseService.add(adresse);
     }
 
