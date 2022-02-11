@@ -1,6 +1,6 @@
 package tn.suptech.ihebelhabib.sec;
 
-import org.springframework.context.annotation.Configuration;
+/*import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.WebSecurityConfigurer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -18,19 +18,26 @@ public class sec extends WebSecurityConfigurerAdapter {
         System.out.println("*******************************************************************************************************************");
         System.out.println(passwordEncoder.encode("123"));
         auth.inMemoryAuthentication().withUser("ahmed").password(passwordEncoder.encode("123")).roles("admin");
-        auth.inMemoryAuthentication().withUser("rafik").password(passwordEncoder.encode("123")).roles("user");*/
+        auth.inMemoryAuthentication().withUser("rafik").password(passwordEncoder.encode("123")).roles("user");
 
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-       /* http.formLogin();
+        http.authorizeRequests().anyRequest().authenticated();
+        http.formLogin();
         //http.httpBasic();
-      //  http.authorizeRequests().anyRequest().authenticated();
+      //
 
         http.authorizeRequests().anyRequest().authenticated();
        // http.csrf(); //actvatio de mecanme contre attaque csrf
-        //http.csrf().disable(); //desactiver*/
+        //http.csrf().disable(); //desactiver
     }
 
 }
+
+*/
+public class sec{
+
+}
+
