@@ -1,5 +1,7 @@
 package tn.suptech.ihebelhabib.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -23,10 +25,11 @@ public class Adresse {
     @Column(name ="CREATED")
     private Date created;
 
-
+    @JsonIgnore
     @OneToOne(mappedBy = "adresse")
     private Client client ;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "adresse")
     private Agence agence ;
 

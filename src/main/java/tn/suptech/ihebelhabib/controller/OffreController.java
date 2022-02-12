@@ -11,37 +11,38 @@ import java.util.List;
 @RequestMapping(path = "/offre")
 public class OffreController {
 
+
     private OffreService offreService;
 
     Logger logger = LoggerFactory.getLogger(OffreController.class);
 
-    public OffreController(OffreService offreService){
-        this.offreService = offreService;
-    }
-
-    @PostMapping(path = "/addoffre")
+    @PostMapping(path = "/add")
     public Offre createOffre(@RequestBody Offre offre){
-        logger.error("Offre ajouter avec success");
+        logger.info("ajout une offre");
         return offreService.add(offre);
     }
 
-    @PostMapping(path = "/upoffre" )
+    @PostMapping(path = "/update" )
     public Offre updateOffre(@RequestBody Offre offre){
+        logger.info("mis à jour une offre");
         return offreService.update(offre);
     }
 
-    @DeleteMapping(path = "/deloffre/{id}")
+    @DeleteMapping(path = "/delete/{id}")
     public Offre deleteOffre(@PathVariable Long id){
+        logger.info("supprime une offre");
         return offreService.delete(id);
     }
 
-    @GetMapping(path = "/getoffre/{id}")
+    @GetMapping(path = "/offre/{id}")
     public Offre getOffre(@PathVariable Long id){
+        logger.info("obtenir une offre");
         return offreService.getOne(id);
     }
 
-    @GetMapping(path = "/getoffres")
+    @GetMapping(path = "/")
     public List<Offre> getOffre(){
+        logger.info("obtenir les offres");
         return offreService.getAll();
     }
 }

@@ -1,5 +1,6 @@
 package tn.suptech.ihebelhabib.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.suptech.ihebelhabib.entities.Compte;
 import tn.suptech.ihebelhabib.repository.CompteRepository;
@@ -9,11 +10,8 @@ import java.util.List;
 @Service
 public class CompteService {
 
+    @Autowired
     private CompteRepository compteRepository;
-
-    private CompteService(CompteRepository compteRepository){
-        this.compteRepository = compteRepository;
-    }
 
     public List<Compte> getAll(){
         return compteRepository.findAll();
@@ -33,7 +31,12 @@ public class CompteService {
 
     public Compte delete(Long id){
         Compte deletedCompte = this.getOne(id);
-        compteRepository.delete(deletedCompte);
-        return deletedCompte;
+        try {
+            compteRepository.delete(deletedCompte);
+            return deletedCompte;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

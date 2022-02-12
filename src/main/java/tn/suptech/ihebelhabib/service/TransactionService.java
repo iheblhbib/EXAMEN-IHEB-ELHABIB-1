@@ -1,5 +1,6 @@
 package tn.suptech.ihebelhabib.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.suptech.ihebelhabib.entities.Transaction;
 import tn.suptech.ihebelhabib.repository.TransactionRepository;
@@ -9,11 +10,8 @@ import java.util.List;
 @Service
 public class TransactionService {
 
+    @Autowired
     private TransactionRepository transactionRepository;
-
-    public TransactionService(TransactionRepository transactionRepository){
-        this.transactionRepository = transactionRepository;
-    }
 
     public List<Transaction> getAll(){
         return transactionRepository.findAll();
@@ -27,13 +25,6 @@ public class TransactionService {
         return transactionRepository.save(transaction);
     }
 
-    public Transaction update(Transaction transaction){
-        return transactionRepository.save(transaction);
-    }
 
-    public Transaction delete(Long id){
-        Transaction deletedTransaction = this.getOne(id);
-        transactionRepository.delete(deletedTransaction);
-        return deletedTransaction;
-    }
+
 }

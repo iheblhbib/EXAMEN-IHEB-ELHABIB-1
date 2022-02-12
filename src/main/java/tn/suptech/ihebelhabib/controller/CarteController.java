@@ -1,6 +1,7 @@
 package tn.suptech.ihebelhabib.controller;
 
 import org.slf4j.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.suptech.ihebelhabib.entities.Carte;
 import tn.suptech.ihebelhabib.service.CarteService;
@@ -11,37 +12,38 @@ import java.util.List;
 @RequestMapping(path = "/carte")
 public class CarteController {
 
+    @Autowired
     private CarteService carteService;
 
     Logger logger = LoggerFactory.getLogger(CarteController.class);
 
-    public CarteController(CarteService carteService){
-        this.carteService = carteService;
-    }
-
-    @PostMapping(path = "/addcarte")
+    @PostMapping(path = "/add")
     public Carte createCarte(@RequestBody Carte carte){
-        logger.error("Carte ajouter avec success");
+        logger.info("ajout une carte");
         return carteService.add(carte);
     }
 
-    @PostMapping(path = "/upcarte" )
+    @PostMapping(path = "/update" )
     public Carte updateCarte(@RequestBody Carte carte){
+        logger.info("mis à jour une carte");
         return carteService.update(carte);
     }
 
-    @DeleteMapping(path = "/delcarte/{id}")
+    @DeleteMapping(path = "/delete/{id}")
     public Carte deleteCarte(@PathVariable Long id){
+        logger.info("supprim une carte");
         return carteService.delete(id);
     }
 
-    @GetMapping(path = "/getcarte/{id}")
+    @GetMapping(path = "/carte/{id}")
     public Carte getCarte(@PathVariable Long id){
+        logger.info("obtenir une carte");
         return carteService.getOne(id);
     }
 
-    @GetMapping(path = "/getcartes")
+    @GetMapping(path = "/")
     public List<Carte> getCartes(){
+        logger.info("obtenir les cartes");
         return carteService.getAll();
     }
 }

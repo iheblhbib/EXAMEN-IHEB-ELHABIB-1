@@ -21,7 +21,7 @@ public class Carte {
     private String plafondRetrait;
 
     @Column(name = "COTISATION")
-    private String cotisation;
+    private double cotisation;
 
     @Column(name ="CREATED")
     private Date created;
@@ -32,7 +32,7 @@ public class Carte {
     @OneToMany(mappedBy = "carte")
     private List<Operation> operation;
 
-    public Carte(Long id, String num, String plafondGlobal, String plafondRetrait, String cotisation, Date created, Compte compte, List<Operation> operation) {
+    public Carte(Long id, String num, String plafondGlobal, String plafondRetrait, double cotisation, Date created, Compte compte, List<Operation> operation) {
         this.id = id;
         this.num = num;
         this.plafondGlobal = plafondGlobal;
@@ -86,11 +86,11 @@ public class Carte {
         this.plafondRetrait = plafondRetrait;
     }
 
-    public String getCotisation() {
+    public double getCotisation() {
         return cotisation;
     }
 
-    public void setCotisation(String cotisation) {
+    public void setCotisation(double cotisation) {
         this.cotisation = cotisation;
     }
 

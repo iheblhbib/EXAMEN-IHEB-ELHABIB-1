@@ -1,6 +1,8 @@
 package tn.suptech.ihebelhabib.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import tn.suptech.ihebelhabib.enums.EtatCompte;
+import tn.suptech.ihebelhabib.enums.TypeCompte;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -20,6 +22,10 @@ public class Compte {
     @Column(name = "ETAT")
     private EtatCompte etat;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "TYPE")
+    private TypeCompte type;
+
     @Column(name = "RIB")
     private int rib;
 
@@ -32,8 +38,14 @@ public class Compte {
     @Column(name ="CREATED")
     private Date created;
 
+    @JsonIgnore
+    @ManyToOne
+    private Agence agence;
+
+    @JsonIgnore
     @ManyToOne
     private Client client;
+
 
     @OneToOne()
     @JoinColumn(name = "CARTE_ID", referencedColumnName = "id")
@@ -42,22 +54,42 @@ public class Compte {
     @OneToMany
     private List<Transaction> transaction;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "comptes" )
     private Set<Offre> offres;
 
-    public Compte(Long id, EtatCompte etat, int rib, String iban, Float montant, Date created, Client client, Carte carte, List<Transaction> transaction) {
+    public Compte(Long id, EtatCompte etat, TypeCompte type, int rib, String iban, Float montant, Date created, Agence agence, Client client, Carte carte, List<Transaction> transaction, Set<Offre> offres) {
         this.id = id;
         this.etat = etat;
+        this.type = type;
         this.rib = rib;
         this.iban = iban;
         this.montant = montant;
         this.created = created;
+        this.agence = agence;
         this.client = client;
         this.carte = carte;
         this.transaction = transaction;
+        this.offres = offres;
     }
 
     public Compte() {
+    }
+
+    public TypeCompte getType() {
+        return type;
+    }
+
+    public void setType(TypeCompte type) {
+        this.type = type;
+    }
+
+    public Agence getAgence() {
+        return agence;
+    }
+
+    public void setAgence(Agence agence) {
+        this.agence = agence;
     }
 
     public Set<Offre> getOffres() {

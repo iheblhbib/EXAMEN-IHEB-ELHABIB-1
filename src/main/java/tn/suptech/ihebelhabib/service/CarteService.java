@@ -1,5 +1,6 @@
 package tn.suptech.ihebelhabib.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.suptech.ihebelhabib.entities.Carte;
 import tn.suptech.ihebelhabib.repository.CarteRepository;
@@ -9,11 +10,8 @@ import java.util.List;
 @Service
 public class CarteService {
 
+    @Autowired
     private CarteRepository carteRepository;
-
-    public CarteService(CarteRepository carteRepository){
-        this.carteRepository = carteRepository;
-    }
 
     public List<Carte> getAll(){
         return carteRepository.findAll();
@@ -33,7 +31,12 @@ public class CarteService {
 
     public Carte delete(Long id){
         Carte deletedCarte = this.getOne(id);
-        carteRepository.delete(deletedCarte);
-        return deletedCarte;
+        try {
+            carteRepository.delete(deletedCarte);
+            return deletedCarte;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

@@ -1,6 +1,9 @@
 package tn.suptech.ihebelhabib.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity( name = "AGENCE")
@@ -15,28 +18,41 @@ public class Agence {
     private int tel;
 
     @Column(name = "LONGTITUDE")
-    private String longtitude;
+    private double longtitude;
 
     @Column(name = "LATITUDE")
-    private String latitude;
+    private double latitude;
 
     @OneToOne()
     @JoinColumn(name = "ADRESSE_ID", referencedColumnName = "id")
     private Adresse adresse;
 
+    @JsonIgnore
     @ManyToOne
     private Banque banque;
 
-    public Agence(Long id, Adresse adresse, int tel, String longtitude, String latitude, Banque banque) {
+    @OneToMany(mappedBy = "agence")
+    private List<Compte> comptes;
+
+    public Agence(Long id, int tel, double longtitude, double latitude, Adresse adresse, Banque banque, List<Compte> comptes) {
         this.id = id;
-        this.adresse = adresse;
         this.tel = tel;
         this.longtitude = longtitude;
         this.latitude = latitude;
+        this.adresse = adresse;
         this.banque = banque;
+        this.comptes = comptes;
     }
 
     public Agence() {
+    }
+
+    public List<Compte> getComptes() {
+        return comptes;
+    }
+
+    public void setComptes(List<Compte> comptes) {
+        this.comptes = comptes;
     }
 
     public Long getId() {
@@ -63,19 +79,19 @@ public class Agence {
         this.tel = tel;
     }
 
-    public String getLongtitude() {
+    public double getLongtitude() {
         return longtitude;
     }
 
-    public void setLongtitude(String longtitude) {
+    public void setLongtitude(double longtitude) {
         this.longtitude = longtitude;
     }
 
-    public String getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(String latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 

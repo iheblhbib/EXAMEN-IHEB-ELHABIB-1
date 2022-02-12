@@ -1,5 +1,6 @@
 package tn.suptech.ihebelhabib.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.suptech.ihebelhabib.entities.Adresse;
 import tn.suptech.ihebelhabib.repository.AdresseRepository;
@@ -9,11 +10,8 @@ import java.util.List;
 @Service
 public class AdresseService {
 
+    @Autowired
     private AdresseRepository adresseRepository;
-
-    private AdresseService(AdresseRepository adresseRepository) {
-        this.adresseRepository = adresseRepository;
-    }
 
     public List<Adresse> getAll(){
         return adresseRepository.findAll();
@@ -33,8 +31,13 @@ public class AdresseService {
 
     public Adresse delete(Long id){
         Adresse deletedAdresse = this.getOne(id);
-        adresseRepository.delete(deletedAdresse);
-        return deletedAdresse;
+        try {
+            adresseRepository.delete(deletedAdresse);
+            return deletedAdresse;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

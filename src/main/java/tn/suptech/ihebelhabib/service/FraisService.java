@@ -1,5 +1,6 @@
 package tn.suptech.ihebelhabib.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.suptech.ihebelhabib.entities.Frais;
 import tn.suptech.ihebelhabib.repository.FraisRepository;
@@ -9,11 +10,8 @@ import java.util.List;
 @Service
 public class FraisService {
 
+    @Autowired
     private FraisRepository fraisRepository;
-
-    public FraisService(FraisRepository fraisRepository){
-        this.fraisRepository = fraisRepository;
-    }
 
     public List<Frais> getAll(){
         return fraisRepository.findAll();
@@ -33,7 +31,12 @@ public class FraisService {
 
     public Frais delete(Long id){
         Frais deletedFrais = this.getOne(id);
-        fraisRepository.delete(deletedFrais);
-        return deletedFrais;
+        try {
+            fraisRepository.delete(deletedFrais);
+            return deletedFrais;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

@@ -1,5 +1,6 @@
 package tn.suptech.ihebelhabib.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.suptech.ihebelhabib.entities.Client;
 import tn.suptech.ihebelhabib.repository.ClientRepository;
@@ -9,11 +10,8 @@ import java.util.List;
 @Service
 public class ClientService {
 
+    @Autowired
     private ClientRepository clientRepository;
-
-    public ClientService(ClientRepository clientRepository){
-        this.clientRepository = clientRepository;
-    }
 
     public List<Client> getAll(){
         return clientRepository.findAll();
@@ -33,7 +31,12 @@ public class ClientService {
 
     public Client delete(Long id){
         Client deletedClient = this.getOne(id);
-        clientRepository.delete(deletedClient);
-        return deletedClient;
+        try {
+            clientRepository.delete(deletedClient);
+            return deletedClient;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

@@ -1,6 +1,7 @@
 package tn.suptech.ihebelhabib.controller;
 
 import org.slf4j.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.suptech.ihebelhabib.entities.Compte;
 import tn.suptech.ihebelhabib.service.CompteService;
@@ -11,37 +12,38 @@ import java.util.List;
 @RequestMapping(path = "/compte")
 public class CompteController {
 
+    @Autowired
     private CompteService compteService;
 
     Logger logger = LoggerFactory.getLogger(CompteController.class);
 
-    public CompteController(CompteService compteService){
-        this.compteService = compteService;
-    }
-
-    @PostMapping(path = "/addcompte")
+    @PostMapping(path = "/add")
     public Compte createCompte(@RequestBody Compte compte){
-        logger.error("Compte ajouter avec success");
+        logger.info("ajout un compte");
         return compteService.add(compte);
     }
 
-    @PostMapping(path = "/upcompte" )
+    @PostMapping(path = "/update" )
     public Compte updateCompte(@RequestBody Compte compte){
+        logger.info("mis à jour un compte");
         return compteService.update(compte);
     }
 
-    @DeleteMapping(path = "/delcompte/{id}")
+    @DeleteMapping(path = "/delete/{id}")
     public Compte deleteCompte(@PathVariable Long id){
+        logger.info("supprim un compte");
         return compteService.delete(id);
     }
 
-    @GetMapping(path = "/getcompte/{id}")
+    @GetMapping(path = "/compte/{id}")
     public Compte getCompte(@PathVariable Long id){
+        logger.info("obtenir un compte");
         return compteService.getOne(id);
     }
 
-    @GetMapping(path = "/getcomptes")
+    @GetMapping(path = "/")
     public List<Compte> getComptes(){
+        logger.info("obtenir les comptes");
         return compteService.getAll();
     }
 }
