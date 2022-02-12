@@ -1,7 +1,6 @@
 package tn.suptech.ihebelhabib.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.slf4j.*;
 import org.springframework.web.bind.annotation.*;
 import tn.suptech.ihebelhabib.entities.Adresse;
 import tn.suptech.ihebelhabib.service.AdresseService;
@@ -43,8 +42,6 @@ public class AdresseController {
 
     @GetMapping(path = "/getadresses")
     public List<Adresse> getAdresses(){
-
-        logger.debug("test");
         return adresseService.getAll();
     }
 }

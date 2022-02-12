@@ -2,7 +2,6 @@ package tn.suptech.ihebelhabib.service;
 
 import org.springframework.stereotype.Service;
 import tn.suptech.ihebelhabib.entities.Agence;
-import tn.suptech.ihebelhabib.repository.AdresseRepository;
 import tn.suptech.ihebelhabib.repository.AgenceRepository;
 
 import java.util.List;
@@ -12,7 +11,7 @@ public class AgenceService {
 
     private AgenceRepository agenceRepository;
 
-    public AgenceService(AdresseRepository adresseRepository){
+    public AgenceService(AgenceRepository agenceRepository){
         this.agenceRepository = agenceRepository;
     }
 
