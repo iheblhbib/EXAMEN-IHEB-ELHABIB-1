@@ -46,4 +46,12 @@ public class CompteController {
         logger.info("obtenir les comptes");
         return compteService.getAll();
     }
+
+    @GetMapping(path = "/{rib}")
+    public Compte getCompteByRib(@PathVariable int rib){
+        logger.info("obtenir un comptes par rib");
+        return compteService.rechercher(rib);
+    }
+
+
 }

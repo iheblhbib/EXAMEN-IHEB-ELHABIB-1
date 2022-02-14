@@ -22,6 +22,7 @@ public class OperationService {
     }
 
     public Operation add(Operation operation){
+        operation.setNewmontant( operation.getOldmontant() - operation.getMontant() - operation.getCarte().getCompte().getCout());
         return operationRepository.save(operation);
     }
 

@@ -14,14 +14,17 @@ public class Operation {
     @Column(name ="CREATED")
     private Date created;
 
-    @Column(name = "SOLDE")
-    private double solde;
+    // Old montant du compte
+    @Column(name = "OLDMONTANT")
+    private double oldmontant;
 
-    @Column(name = "DEBIT")
-    private double debit;
+    // Combien le montant de operation
+    @Column(name = "MONTANT")
+    private double montant;
 
-    @Column(name = "CREDIT")
-    private double credit;
+    // total montant apres l'operation
+    @Column(name = "NEWMONTANT")
+    private double newmontant;
 
     @Column(name = "LIBELLE")
     private String libelle;
@@ -29,13 +32,14 @@ public class Operation {
     @ManyToOne
     private Carte carte;
 
-    public Operation(Long id, Date created, double solde, double debit, double credit, String libelle) {
+    public Operation(Long id, Date created, double oldmontant, double montant, double newmontant, String libelle, Carte carte) {
         this.id = id;
         this.created = created;
-        this.solde = solde;
-        this.debit = debit;
-        this.credit = credit;
+        this.oldmontant = oldmontant;
+        this.montant = montant;
+        this.newmontant = newmontant;
         this.libelle = libelle;
+        this.carte = carte;
     }
 
     public Carte getCarte() {
@@ -65,28 +69,28 @@ public class Operation {
         this.created = created;
     }
 
-    public double getSolde() {
-        return solde;
+    public double getOldmontant() {
+        return oldmontant;
     }
 
-    public void setSolde(double solde) {
-        this.solde = solde;
+    public void setOldmontant(double oldmontant) {
+        this.oldmontant = oldmontant;
     }
 
-    public double getDebit() {
-        return debit;
+    public double getMontant() {
+        return montant;
     }
 
-    public void setDebit(double debit) {
-        this.debit = debit;
+    public void setMontant(double montant) {
+        this.montant = montant;
     }
 
-    public double getCredit() {
-        return credit;
+    public double getNewmontant() {
+        return newmontant;
     }
 
-    public void setCredit(double credit) {
-        this.credit = credit;
+    public void setNewmontant(double newmontant) {
+        this.newmontant = newmontant;
     }
 
     public String getLibelle() {

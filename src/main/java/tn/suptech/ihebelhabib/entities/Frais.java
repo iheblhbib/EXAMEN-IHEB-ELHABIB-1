@@ -12,15 +12,15 @@ public class Frais {
     @Column(name = "ID")
     private Long id;
 
-    @Column(name = "AGIOS")
-    private double AGIOS;
+    @Column(name = "CION")
+    private double cion;
 
     @OneToMany(mappedBy = "frais")
     private List<Transaction> transactions;
 
-    public Frais(Long id, double AGIOS, List<Transaction> transactions) {
+    public Frais(Long id, double cion, List<Transaction> transactions) {
         this.id = id;
-        this.AGIOS = AGIOS;
+        this.cion = cion;
         this.transactions = transactions;
     }
 
@@ -35,12 +35,12 @@ public class Frais {
         this.id = id;
     }
 
-    public double getAGIOS() {
-        return AGIOS;
+    public double getCion() {
+        return cion;
     }
 
-    public void setAGIOS(double AGIOS) {
-        this.AGIOS = AGIOS;
+    public void setCion(double cion) {
+        this.cion = cion;
     }
 
     public List<Transaction> getTransaction() {

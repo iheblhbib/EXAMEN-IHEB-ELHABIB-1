@@ -29,17 +29,17 @@ public class OperationController {
 
         // si le compte est courant et n'est pas débiteur ---> valider le retrait
         if(typeCompte.equals(TypeCompte.COURANT) && retrait > 0){
+                operation.getCarte().getCompte().setMontant(operation.getNewmontant());
             return operationService.add(operation);
 
         // si non si le compte est eparne et le compte fermee ---> valider le retrait
         }else if(etatCompte.equals(EtatCompte.FERMEE) && typeCompte.equals(TypeCompte.EPARNE)){
+            operation.getCarte().getCompte().setMontant(operation.getNewmontant());
             return operationService.add(operation);
         }else{
             return null;
         }
-
     }
-
 
     @GetMapping(path = "/operation/{id}")
     public Operation getOperation(@PathVariable Long id){

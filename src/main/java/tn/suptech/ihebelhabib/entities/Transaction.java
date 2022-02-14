@@ -32,16 +32,29 @@ public class Transaction {
     @ManyToOne
     private Frais frais;
 
+    @ManyToOne
+    private Compte compte;
+
     public Transaction() {
     }
 
-    public Transaction(Long id, double montant, int distinataire, int source, Date created, SensTransaction sens) {
+    public Transaction(Long id, double montant, int distinataire, int source, Date created, SensTransaction sens, Frais frais, Compte compte) {
         this.id = id;
         this.montant = montant;
         this.distinataire = distinataire;
         this.source = source;
         this.created = created;
         this.sens = sens;
+        this.frais = frais;
+        this.compte = compte;
+    }
+
+    public Compte getCompte() {
+        return compte;
+    }
+
+    public void setCompte(Compte compte) {
+        this.compte = compte;
     }
 
     public Frais getFrais() {

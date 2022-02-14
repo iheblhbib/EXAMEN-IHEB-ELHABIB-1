@@ -24,10 +24,10 @@ public class IhebElhabibApplication {
        return  args -> {
 
            Adresse adresse = adresseService.add(new Adresse(null,"Tunisie", "Le Bardo", "2000", new Date(), null, null));
-          Client client = clientService.add(new Client( null, "elhaib", "iheb", 95198006, "elhabib.iheb@suptech.tn", adresse, null));
+           Client client = clientService.add(new Client( null, "elhaib", "iheb", 95198006, "elhabib.iheb@suptech.tn", adresse, null));
            Banque banque = banqueService.add(new Banque(null,"ZITN", "Zitouna Banque", "ZTN", null, "https://www.banquezitouna.com/", "contact@banquezitouna.com"));
            Agence agence = agenceService.add(new Agence( null, 81555555, 31, 18, adresse, banque, null));
-           Compte compte = compteService.add(new Compte(null,null,null, 000001,"ZTN00001", null, new Date(), agence, client, null, null, null));
+           Compte compte = compteService.add(new Compte(null,null,null, 000001,"ZTN00001", 5000,5,0.499, new Date(), agence, client,null, null, null, null));
            Carte carte = carteService.add(new Carte(null, "1234 5678 1234 5678",null,null, 500, new Date() , compte, null));
 
        };

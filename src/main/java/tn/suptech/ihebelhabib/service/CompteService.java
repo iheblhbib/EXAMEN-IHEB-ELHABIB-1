@@ -29,6 +29,10 @@ public class CompteService {
         return compteRepository.save(compte);
     }
 
+    public Compte rechercher(int rib){
+        return compteRepository.chercher(rib);
+    }
+
     public Compte delete(Long id){
         Compte deletedCompte = this.getOne(id);
         try {

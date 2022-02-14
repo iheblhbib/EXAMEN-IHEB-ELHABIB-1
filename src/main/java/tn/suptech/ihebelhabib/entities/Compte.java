@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Set;
 
 @Entity( name = "COMPTE")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Compte {
 
     @Id
@@ -33,7 +32,13 @@ public class Compte {
     private String iban;
 
     @Column(name = "MONTANT")
-    private Float montant;
+    private double montant;
+
+    @Column(name = "TAUX")
+    private double taux;
+
+    @Column(name = "COUT")
+    private double cout;
 
     @Column(name ="CREATED")
     private Date created;
@@ -54,26 +59,53 @@ public class Compte {
     @OneToMany
     private List<Transaction> transaction;
 
+    @OneToMany
+    private List<Credit> credits;
+
     @JsonIgnore
     @ManyToMany(mappedBy = "comptes" )
     private Set<Offre> offres;
 
-    public Compte(Long id, EtatCompte etat, TypeCompte type, int rib, String iban, Float montant, Date created, Agence agence, Client client, Carte carte, List<Transaction> transaction, Set<Offre> offres) {
+    public Compte(Long id, EtatCompte etat, TypeCompte type, int rib, String iban, double montant, double taux, double cout, Date created, Agence agence, Client client, Carte carte, List<Transaction> transaction, List<Credit> credits, Set<Offre> offres) {
         this.id = id;
         this.etat = etat;
         this.type = type;
         this.rib = rib;
         this.iban = iban;
         this.montant = montant;
+        this.taux = taux;
+        this.cout = cout;
         this.created = created;
         this.agence = agence;
         this.client = client;
         this.carte = carte;
         this.transaction = transaction;
+        this.credits = credits;
         this.offres = offres;
     }
 
     public Compte() {
+    }
+
+    public double getTaux() {
+        return taux;
+    }
+
+
+    public void setCout(double cout) {
+        this.cout = cout;
+    }
+
+    public List<Credit> getCredits() {
+        return credits;
+    }
+
+    public void setCredits(List<Credit> credits) {
+        this.credits = credits;
+    }
+
+    public double getCout() {
+        return cout;
     }
 
     public TypeCompte getType() {
@@ -132,11 +164,11 @@ public class Compte {
         this.iban = iban;
     }
 
-    public Float getMontant() {
+    public double getMontant() {
         return montant;
     }
 
-    public void setMontant(Float montant) {
+    public void setMontant(double montant) {
         this.montant = montant;
     }
 
