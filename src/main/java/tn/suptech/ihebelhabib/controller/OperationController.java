@@ -3,7 +3,7 @@ package tn.suptech.ihebelhabib.controller;
 import org.slf4j.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import tn.suptech.ihebelhabib.entities.Operation;
+import tn.suptech.ihebelhabib.domain.Operation;
 import tn.suptech.ihebelhabib.enums.EtatCompte;
 import tn.suptech.ihebelhabib.enums.TypeCompte;
 import tn.suptech.ihebelhabib.service.OperationService;

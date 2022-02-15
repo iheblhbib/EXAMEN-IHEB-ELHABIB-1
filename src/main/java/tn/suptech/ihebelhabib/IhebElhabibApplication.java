@@ -4,14 +4,13 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import tn.suptech.ihebelhabib.entities.*;
+import tn.suptech.ihebelhabib.domain.*;
 import tn.suptech.ihebelhabib.enums.EtatCompte;
 import tn.suptech.ihebelhabib.enums.SensTransaction;
 import tn.suptech.ihebelhabib.enums.TypeCompte;
 import tn.suptech.ihebelhabib.service.*;
 
 import java.util.Date;
-import java.util.List;
 
 @SpringBootApplication
 public class IhebElhabibApplication {
@@ -21,8 +20,32 @@ public class IhebElhabibApplication {
 
     }
     @Bean
-    CommandLineRunner start (FraisService fraisService, TransactionService transactionService, OperationService operationService, OffreService offreService, CarteService carteService, AdresseService adresseService, ClientService clientService, BanqueService banqueService, AgenceService agenceService, CompteService compteService){
+    CommandLineRunner start (UserService userService,
+                             RoleService roleService,
+                             FraisService fraisService,
+                             TransactionService transactionService,
+                             OperationService operationService,
+                             OffreService offreService,
+                             CarteService carteService,
+                             AdresseService adresseService,
+                             ClientService clientService,
+                             BanqueService banqueService,
+                             AgenceService agenceService,
+                             CompteService compteService){
        return  args -> {
+
+           Role role = roleService.add(new Role(null,"Admin","Super Admin"));
+           Role role2 = roleService.add(new Role(null,"Client","Client"));
+
+           User user = userService.add(new User(null,"Admin","123"));
+           User user2 = userService.add(new User(null,"Client","123"));
+
+           user.setRole(role);
+           user2.setRole(role2);
+
+           roleService.update(role);
+           roleService.update(role2);
+
            Banque banque = banqueService.add(new Banque(null,"ZITN", "Zitouna Banque", "ZTN", null, "https://www.banquezitouna.com/", "contact@banquezitouna.com"));
            Offre offre = offreService.add(new Offre(null, "Starter", 72.5, new Date(), banque));
            Adresse adresse = adresseService.add(new Adresse(null,"Tunisie", "Le Bardo", "2000", new Date(), null, null));

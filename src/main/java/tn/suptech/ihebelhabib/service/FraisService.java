@@ -2,7 +2,7 @@ package tn.suptech.ihebelhabib.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tn.suptech.ihebelhabib.entities.Frais;
+import tn.suptech.ihebelhabib.domain.Frais;
 import tn.suptech.ihebelhabib.repository.FraisRepository;
 
 import java.util.List;

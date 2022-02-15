@@ -2,7 +2,7 @@ package tn.suptech.ihebelhabib.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tn.suptech.ihebelhabib.entities.Offre;
+import tn.suptech.ihebelhabib.domain.Offre;
 import tn.suptech.ihebelhabib.repository.OffreRepository;
 
 import java.util.List;

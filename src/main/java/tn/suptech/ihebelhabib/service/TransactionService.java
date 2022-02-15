@@ -2,9 +2,8 @@ package tn.suptech.ihebelhabib.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tn.suptech.ihebelhabib.entities.Compte;
-import tn.suptech.ihebelhabib.entities.Transaction;
-import tn.suptech.ihebelhabib.enums.SensTransaction;
+import tn.suptech.ihebelhabib.domain.Compte;
+import tn.suptech.ihebelhabib.domain.Transaction;
 import tn.suptech.ihebelhabib.repository.CompteRepository;
 import tn.suptech.ihebelhabib.repository.TransactionRepository;
 
@@ -29,9 +28,9 @@ public class TransactionService {
 
     public Transaction add(Transaction transaction){
 
-        Compte comptedesinataire = compteRepository.chercher(transaction.getDistinataire());
+        Compte comptedesinataire = compteRepository.findByRib(transaction.getDistinataire());
 
-        Compte comptesource = compteRepository.chercher(transaction.getSource());
+        Compte comptesource = compteRepository.findByRib(transaction.getSource());
 
         comptesource.setMontant(comptesource.getMontant() - transaction.getMontant() - comptesource.getCout());
 

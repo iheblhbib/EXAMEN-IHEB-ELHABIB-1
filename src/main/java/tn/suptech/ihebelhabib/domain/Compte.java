@@ -1,4 +1,4 @@
-package tn.suptech.ihebelhabib.entities;
+package tn.suptech.ihebelhabib.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import tn.suptech.ihebelhabib.enums.EtatCompte;
@@ -7,7 +7,6 @@ import tn.suptech.ihebelhabib.enums.TypeCompte;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 @Entity( name = "COMPTE")
 public class Compte {

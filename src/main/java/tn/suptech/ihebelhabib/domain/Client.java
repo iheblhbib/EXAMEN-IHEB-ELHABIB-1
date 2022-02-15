@@ -1,4 +1,4 @@
-package tn.suptech.ihebelhabib.entities;
+package tn.suptech.ihebelhabib.domain;
 
 import javax.persistence.*;
 import java.util.Date;

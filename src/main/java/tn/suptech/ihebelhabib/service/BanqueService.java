@@ -2,7 +2,7 @@ package tn.suptech.ihebelhabib.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tn.suptech.ihebelhabib.entities.Banque;
+import tn.suptech.ihebelhabib.domain.Banque;
 import tn.suptech.ihebelhabib.repository.BanqueRepository;
 
 import java.util.List;

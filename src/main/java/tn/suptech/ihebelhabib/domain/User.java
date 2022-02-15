@@ -1,7 +1,6 @@
-package tn.suptech.ihebelhabib.entities;
+package tn.suptech.ihebelhabib.domain;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 public class User {
@@ -17,8 +16,8 @@ public class User {
     @Column(name = "PASSWORD")
     private  String password ;
 
-    @ManyToMany(mappedBy = "users" )
-    private Set<Role> roles;
+    @ManyToOne
+    private Role role;
 
     public User(Long id, String userName, String password) {
         this.id = id;
@@ -53,11 +52,11 @@ public class User {
         this.password = password;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

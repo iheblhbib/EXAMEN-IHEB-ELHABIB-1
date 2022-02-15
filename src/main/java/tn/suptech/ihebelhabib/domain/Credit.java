@@ -1,4 +1,4 @@
-package tn.suptech.ihebelhabib.entities;
+package tn.suptech.ihebelhabib.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import tn.suptech.ihebelhabib.enums.EtatCredit;

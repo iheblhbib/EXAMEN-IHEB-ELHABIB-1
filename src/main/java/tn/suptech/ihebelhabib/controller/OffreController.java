@@ -2,7 +2,7 @@ package tn.suptech.ihebelhabib.controller;
 
 import org.slf4j.*;
 import org.springframework.web.bind.annotation.*;
-import tn.suptech.ihebelhabib.entities.Offre;
+import tn.suptech.ihebelhabib.domain.Offre;
 import tn.suptech.ihebelhabib.service.OffreService;
 
 import java.util.List;

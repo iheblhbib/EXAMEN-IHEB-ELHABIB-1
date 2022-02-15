@@ -2,7 +2,7 @@ package tn.suptech.ihebelhabib.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tn.suptech.ihebelhabib.entities.Carte;
+import tn.suptech.ihebelhabib.domain.Carte;
 import tn.suptech.ihebelhabib.repository.CarteRepository;
 
 import java.util.List;

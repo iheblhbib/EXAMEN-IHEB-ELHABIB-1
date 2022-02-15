@@ -3,7 +3,7 @@ package tn.suptech.ihebelhabib.controller;
 import org.slf4j.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import tn.suptech.ihebelhabib.entities.Transaction;
+import tn.suptech.ihebelhabib.domain.Transaction;
 import tn.suptech.ihebelhabib.enums.SensTransaction;
 import tn.suptech.ihebelhabib.service.TransactionService;
 

@@ -3,7 +3,7 @@ package tn.suptech.ihebelhabib.controller;
 import org.slf4j.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import tn.suptech.ihebelhabib.entities.Compte;
+import tn.suptech.ihebelhabib.domain.Compte;
 import tn.suptech.ihebelhabib.service.CompteService;
 
 import java.util.List;
@@ -50,7 +50,7 @@ public class CompteController {
     @GetMapping(path = "/{rib}")
     public Compte getCompteByRib(@PathVariable int rib){
         logger.info("obtenir un comptes par rib");
-        return compteService.rechercher(rib);
+        return compteService.findByRib(rib);
     }
 
 

@@ -3,7 +3,7 @@ package tn.suptech.ihebelhabib.controller;
 import org.slf4j.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import tn.suptech.ihebelhabib.entities.Carte;
+import tn.suptech.ihebelhabib.domain.Carte;
 import tn.suptech.ihebelhabib.service.CarteService;
 
 import java.util.List;

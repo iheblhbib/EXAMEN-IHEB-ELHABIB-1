@@ -2,7 +2,7 @@ package tn.suptech.ihebelhabib.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tn.suptech.ihebelhabib.entities.Credit;
+import tn.suptech.ihebelhabib.domain.Credit;
 import tn.suptech.ihebelhabib.enums.EtatCredit;
 import tn.suptech.ihebelhabib.repository.CreditRepository;
 

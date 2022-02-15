@@ -2,11 +2,10 @@ package tn.suptech.ihebelhabib.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tn.suptech.ihebelhabib.entities.Compte;
+import tn.suptech.ihebelhabib.domain.Compte;
 import tn.suptech.ihebelhabib.repository.CompteRepository;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class CompteService {
@@ -31,8 +30,8 @@ public class CompteService {
         return compteRepository.save(compte);
     }
 
-    public Compte rechercher(int rib){
-        return compteRepository.chercher(rib);
+    public Compte findByRib(int rib){
+        return compteRepository.findByRib(rib);
     }
 
     public Compte delete(Long id){

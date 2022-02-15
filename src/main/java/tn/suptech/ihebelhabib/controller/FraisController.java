@@ -4,7 +4,7 @@ import org.slf4j.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import tn.suptech.ihebelhabib.entities.Frais;
+import tn.suptech.ihebelhabib.domain.Frais;
 import tn.suptech.ihebelhabib.service.FraisService;
 
 import java.util.List;
