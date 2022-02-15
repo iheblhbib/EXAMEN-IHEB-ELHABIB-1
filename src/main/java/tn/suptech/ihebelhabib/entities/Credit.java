@@ -24,7 +24,7 @@ public class Credit {
     @Column(name = "AGIOS")
     private double agios;
 
-    @Column(name ="INRERROGATION")
+    @Column(name ="INTERROGATION")
     private Date interrogation;
 
     @Column(name ="DEPOT")

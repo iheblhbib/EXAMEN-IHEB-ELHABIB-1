@@ -1,5 +1,7 @@
 package tn.suptech.ihebelhabib.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -22,12 +24,12 @@ public class Offre {
     @Column(name ="CREATED")
     private Date created;
 
+    @JsonIgnore
     @ManyToOne
     private Banque banque;
 
-    @ManyToMany()
-    @JoinTable(name="COMPTE_OFFRE", joinColumns = @JoinColumn(name="OFFRE_ID"),inverseJoinColumns = @JoinColumn(name="COMPTE_ID"))
-    private Set<Compte> comptes ;
+    @OneToMany
+    private List<Client> clients;
 
     public Offre(Long id, String libelle, double frais, Date created, Banque banque) {
         this.id = id;
@@ -40,7 +42,13 @@ public class Offre {
     public Offre() {
     }
 
+    public List<Client> getClients() {
+        return clients;
+    }
 
+    public void setClients(List<Client> clients) {
+        this.clients = clients;
+    }
 
     public Long getId() {
         return id;

@@ -52,6 +52,7 @@ public class Compte {
     private Client client;
 
 
+
     @OneToOne()
     @JoinColumn(name = "CARTE_ID", referencedColumnName = "id")
     private Carte carte;
@@ -63,10 +64,10 @@ public class Compte {
     private List<Credit> credits;
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "comptes" )
-    private Set<Offre> offres;
+    @ManyToOne
+    private Offre offre;
 
-    public Compte(Long id, EtatCompte etat, TypeCompte type, int rib, String iban, double montant, double taux, double cout, Date created, Agence agence, Client client, Carte carte, List<Transaction> transaction, List<Credit> credits, Set<Offre> offres) {
+    public Compte(Long id, EtatCompte etat, TypeCompte type, int rib, String iban, double montant, double taux, double cout, Date created, Agence agence, Client client, Carte carte, List<Transaction> transaction, List<Credit> credits, Offre offre) {
         this.id = id;
         this.etat = etat;
         this.type = type;
@@ -81,10 +82,22 @@ public class Compte {
         this.carte = carte;
         this.transaction = transaction;
         this.credits = credits;
-        this.offres = offres;
+        this.offre = offre;
     }
 
     public Compte() {
+    }
+
+    public void setTaux(double taux) {
+        this.taux = taux;
+    }
+
+    public Offre getOffre() {
+        return offre;
+    }
+
+    public void setOffre(Offre offre) {
+        this.offre = offre;
     }
 
     public double getTaux() {
@@ -124,13 +137,7 @@ public class Compte {
         this.agence = agence;
     }
 
-    public Set<Offre> getOffres() {
-        return offres;
-    }
 
-    public void setOffres(Set<Offre> offres) {
-        this.offres = offres;
-    }
 
     public Long getId() {
         return id;

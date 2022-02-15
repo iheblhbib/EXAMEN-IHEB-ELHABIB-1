@@ -1,5 +1,7 @@
 package tn.suptech.ihebelhabib.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -15,10 +17,10 @@ public class Carte {
     private String num;
 
     @Column(name = "PLAFOND_GLOBAL")
-    private String plafondGlobal;
+    private double plafondGlobal;
 
     @Column(name = "PLAFOND_RETRAIT")
-    private String plafondRetrait;
+    private double plafondRetrait;
 
     @Column(name = "COTISATION")
     private double cotisation;
@@ -26,13 +28,14 @@ public class Carte {
     @Column(name ="CREATED")
     private Date created;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "carte")
     private Compte compte ;
 
     @OneToMany(mappedBy = "carte")
     private List<Operation> operation;
 
-    public Carte(Long id, String num, String plafondGlobal, String plafondRetrait, double cotisation, Date created, Compte compte, List<Operation> operation) {
+    public Carte(Long id, String num, double plafondGlobal, double plafondRetrait, double cotisation, Date created, Compte compte, List<Operation> operation) {
         this.id = id;
         this.num = num;
         this.plafondGlobal = plafondGlobal;
@@ -70,19 +73,19 @@ public class Carte {
         this.num = num;
     }
 
-    public String getPlafondGlobal() {
+    public double getPlafondGlobal() {
         return plafondGlobal;
     }
 
-    public void setPlafondGlobal(String plafondGlobal) {
+    public void setPlafondGlobal(double plafondGlobal) {
         this.plafondGlobal = plafondGlobal;
     }
 
-    public String getPlafondRetrait() {
+    public double getPlafondRetrait() {
         return plafondRetrait;
     }
 
-    public void setPlafondRetrait(String plafondRetrait) {
+    public void setPlafondRetrait(double plafondRetrait) {
         this.plafondRetrait = plafondRetrait;
     }
 

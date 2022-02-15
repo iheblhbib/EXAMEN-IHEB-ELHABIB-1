@@ -29,11 +29,12 @@ public class TransactionService {
 
     public Transaction add(Transaction transaction){
 
-
         Compte comptedesinataire = compteRepository.chercher(transaction.getDistinataire());
+
         Compte comptesource = compteRepository.chercher(transaction.getSource());
 
         comptesource.setMontant(comptesource.getMontant() - transaction.getMontant() - comptesource.getCout());
+
         comptedesinataire.setMontant( comptedesinataire.getMontant() + transaction.getMontant() - comptedesinataire.getCout());
 
         return transactionRepository.save(transaction);

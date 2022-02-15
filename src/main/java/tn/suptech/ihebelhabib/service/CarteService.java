@@ -22,6 +22,7 @@ public class CarteService {
     }
 
     public Carte add(Carte carte){
+        carte.getCompte().setMontant( carte.getCompte().getMontant() - carte.getCotisation());
         return carteRepository.save(carte);
     }
 

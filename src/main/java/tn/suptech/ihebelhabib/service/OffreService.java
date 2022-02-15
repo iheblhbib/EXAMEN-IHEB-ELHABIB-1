@@ -30,13 +30,19 @@ public class OffreService {
     }
 
     public Offre delete(Long id){
+
         Offre deletedOffre = this.getOne(id);
+
         try {
             offreRepository.delete(deletedOffre);
+
             return deletedOffre;
+
         } catch (Exception e) {
+
             e.printStackTrace();
         }
+
         return null;
     }
 }

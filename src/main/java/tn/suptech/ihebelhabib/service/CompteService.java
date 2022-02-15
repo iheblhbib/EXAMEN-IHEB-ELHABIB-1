@@ -6,6 +6,7 @@ import tn.suptech.ihebelhabib.entities.Compte;
 import tn.suptech.ihebelhabib.repository.CompteRepository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CompteService {
@@ -22,6 +23,7 @@ public class CompteService {
     }
 
     public Compte add(Compte compte){
+        compte.setMontant( compte.getMontant() - compte.getOffre().getFrais());
         return compteRepository.save(compte);
     }
 
@@ -42,5 +44,10 @@ public class CompteService {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public Compte getByRib(int rib){
+        return this.getAll().stream().filter(c->c.getRib()==rib).findFirst().get();
+     //   this.getAll().stream().filter(c->c.getClient().getNom().contains("bib")).collect(Collectors.toList()).forEach();
     }
 }

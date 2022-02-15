@@ -30,6 +30,12 @@ public class CreditController {
         return creditService.update(credit);
     }
 
+    @PostMapping(path = "/payeeCredit" )
+    public Credit changeEtat(@RequestBody Credit credit){
+        logger.info("mis à jour un Credit");
+        return creditService.changeEtat(credit);
+    }
+
 
     @GetMapping(path = "/credit/{id}")
     public Credit getCredit(@PathVariable Long id){

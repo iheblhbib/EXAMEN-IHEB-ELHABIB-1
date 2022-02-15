@@ -33,20 +33,31 @@ public class CreditService {
     }
 
     public Credit update(Credit credit){
+        return creditRepository.save(credit);
+    }
+
+    public Credit changeEtat(Credit credit){
 
         // recupéré les deux dates
         Date depot = credit.getDepot();
+
         Date interrogation = credit.getInterrogation();
 
         //convertir les dates en localdate pour calculer le nombre de jours
         LocalDate dateDepot = depot.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
         LocalDate dateInterrogation = interrogation.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
         Period period = Period.between(dateDepot, dateInterrogation);
+
         int diff = period.getDays();
+
         credit.setAgios((credit.getMontant() * credit.getCompte().getTaux() * Math.abs(diff) /100 ) / 365);
+
         credit.setEtat(EtatCredit.PAYEE);
+
         return creditRepository.save(credit);
+
     }
 
 

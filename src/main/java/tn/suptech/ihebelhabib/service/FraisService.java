@@ -30,13 +30,21 @@ public class FraisService {
     }
 
     public Frais delete(Long id){
+
         Frais deletedFrais = this.getOne(id);
+
         try {
+
             fraisRepository.delete(deletedFrais);
+
             return deletedFrais;
+
         } catch (Exception e) {
+
             e.printStackTrace();
+
         }
+
         return null;
     }
 }

@@ -34,14 +34,13 @@ public class Agence {
     @OneToMany(mappedBy = "agence")
     private List<Compte> comptes;
 
-    public Agence(Long id, int tel, double longtitude, double latitude, Adresse adresse, Banque banque, List<Compte> comptes) {
+    public Agence(Long id, int tel, double longtitude, double latitude, Adresse adresse, Banque banque) {
         this.id = id;
         this.tel = tel;
         this.longtitude = longtitude;
         this.latitude = latitude;
         this.adresse = adresse;
         this.banque = banque;
-        this.comptes = comptes;
     }
 
     public Agence() {

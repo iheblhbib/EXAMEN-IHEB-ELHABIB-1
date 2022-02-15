@@ -1,6 +1,7 @@
 package tn.suptech.ihebelhabib.entities;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity( name = "CLIENT")
@@ -23,6 +24,9 @@ public class Client {
     @Column(name = "EMAIL")
     private String email;
 
+    @Column(name = "CREATED")
+    private Date date;
+
     @OneToOne()
     @JoinColumn(name = "ADRESSE_ID", referencedColumnName = "id")
     private Adresse adresse;
@@ -30,17 +34,25 @@ public class Client {
     @OneToMany(mappedBy = "client")
     private List<Compte> comptes;
 
-    public Client(Long id, String nom, String prenom, int tel, String email, Adresse adresse, List<Compte> comptes) {
+    public Client(Long id, String nom, String prenom, int tel, String email, Date date, Adresse adresse) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.tel = tel;
         this.email = email;
+        this.date = date;
         this.adresse = adresse;
-        this.comptes = comptes;
     }
 
     public Client() {
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public Long getId() {

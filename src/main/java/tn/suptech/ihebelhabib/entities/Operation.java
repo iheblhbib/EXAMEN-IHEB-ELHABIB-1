@@ -1,5 +1,7 @@
 package tn.suptech.ihebelhabib.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -29,15 +31,15 @@ public class Operation {
     @Column(name = "LIBELLE")
     private String libelle;
 
+    @JsonIgnore
     @ManyToOne
     private Carte carte;
 
-    public Operation(Long id, Date created, double oldmontant, double montant, double newmontant, String libelle, Carte carte) {
+    public Operation(Long id, Date created, double oldmontant, double montant,  String libelle, Carte carte) {
         this.id = id;
         this.created = created;
         this.oldmontant = oldmontant;
         this.montant = montant;
-        this.newmontant = newmontant;
         this.libelle = libelle;
         this.carte = carte;
     }

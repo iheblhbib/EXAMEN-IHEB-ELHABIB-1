@@ -1,5 +1,6 @@
 package tn.suptech.ihebelhabib.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import tn.suptech.ihebelhabib.enums.SensTransaction;
 
 import javax.persistence.*;
@@ -29,16 +30,18 @@ public class Transaction {
     @Column(name = "SENS")
     private SensTransaction sens;
 
+    @JsonIgnore
     @ManyToOne
     private Frais frais;
 
+    @JsonIgnore
     @ManyToOne
     private Compte compte;
 
     public Transaction() {
     }
 
-    public Transaction(Long id, double montant, int distinataire, int source, Date created, SensTransaction sens, Frais frais, Compte compte) {
+    public Transaction(Long id, double montant, int distinataire, int source, Date created, SensTransaction sens, Frais frais) {
         this.id = id;
         this.montant = montant;
         this.distinataire = distinataire;
@@ -46,7 +49,6 @@ public class Transaction {
         this.created = created;
         this.sens = sens;
         this.frais = frais;
-        this.compte = compte;
     }
 
     public Compte getCompte() {

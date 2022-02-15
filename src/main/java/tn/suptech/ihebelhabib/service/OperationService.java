@@ -13,6 +13,9 @@ public class OperationService {
     @Autowired
     private OperationRepository operationRepository;
 
+    @Autowired
+    private CompteService compteService;
+
     public List<Operation> getAll(){
         return operationRepository.findAll();
     }
@@ -22,7 +25,13 @@ public class OperationService {
     }
 
     public Operation add(Operation operation){
+
         operation.setNewmontant( operation.getOldmontant() - operation.getMontant() - operation.getCarte().getCompte().getCout());
+
+        operation.getCarte().getCompte().setMontant(operation.getNewmontant());
+
+        compteService.update(operation.getCarte().getCompte());
+
         return operationRepository.save(operation);
     }
 
